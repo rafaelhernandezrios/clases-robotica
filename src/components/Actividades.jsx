@@ -91,120 +91,109 @@ export default function Actividades({ endEffector, L1, L2 }) {
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-4 mt-10 pb-10">
-      <h2 className="text-xl font-bold text-slate-800 border-b-2 border-emerald-500 pb-2 mb-6">
-        Actividades
-      </h2>
-      <p className="text-slate-600 text-sm mb-6">
-        Practica lo visto en clase: calcula posiciones, lleva el robot a un punto y programa la cinemática directa.
-      </p>
+    <section id="actividades" className="max-w-6xl mx-auto px-4 mt-12 pb-14 scroll-mt-6">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-slate-800 border-b-2 border-emerald-500 pb-3 mb-2">
+          Actividades
+        </h2>
+        <p className="text-slate-600 text-base max-w-2xl">
+          Practica lo visto en clase: calcula posiciones, lleva el robot a un punto y programa la cinemática directa.
+        </p>
+      </div>
 
-      <div className="space-y-8">
+      <div className="space-y-6">
         {/* Ejercicio 1 */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
-          <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm">1</span>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-slate-800 mb-2">Calcular la posición (x, y)</h3>
-              <p className="text-sm text-slate-600 mb-3">
-                Con <strong>L₁={EJERCICIO_1.L1}</strong>, <strong>L₂={EJERCICIO_1.L2}</strong>, <strong>θ₁={EJERCICIO_1.theta1Deg}°</strong> y <strong>θ₂={EJERCICIO_1.theta2Deg}°</strong>, calcula la posición del efector final. Puedes usar la simulación (pon esos ángulos en los sliders) o la fórmula a mano.
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
-                <label className="text-sm text-slate-600">
-                  x = <input
-                    type="number"
-                    value={ex1X}
-                    onChange={(e) => { setEx1X(e.target.value); setEx1Result(null); }}
-                    className="w-20 font-mono text-sm border border-slate-300 rounded px-2 py-1 ml-1"
-                    step="0.1"
-                    placeholder="0"
-                  />
-                </label>
-                <label className="text-sm text-slate-600">
-                  y = <input
-                    type="number"
-                    value={ex1Y}
-                    onChange={(e) => { setEx1Y(e.target.value); setEx1Result(null); }}
-                    className="w-20 font-mono text-sm border border-slate-300 rounded px-2 py-1 ml-1"
-                    step="0.1"
-                    placeholder="0"
-                  />
-                </label>
-                <button
-                  type="button"
-                  onClick={verificarEjercicio1}
-                  className="px-4 py-2 bg-sky-600 text-white rounded-lg text-sm font-medium hover:bg-sky-700"
-                >
-                  Verificar
-                </button>
-                {ex1Result === 'ok' && <span className="text-emerald-600 font-medium text-sm">✓ Correcto</span>}
-                {ex1Result === 'error' && <span className="text-red-600 text-sm">Revisa el cálculo (tolerancia ±{TOLERANCIA_NUMERICA})</span>}
-              </div>
+        <article className="bg-white rounded-card border border-slate-200 shadow-card overflow-hidden transition hover:shadow-card-hover">
+          <div className="p-5 sm:p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="flex-shrink-0 w-9 h-9 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm">1</span>
+              <h3 className="font-semibold text-slate-800 text-lg">Calcular la posición (x, y)</h3>
+            </div>
+            <p className="text-sm text-slate-600 mb-4 pl-12">
+              Con <strong>L₁={EJERCICIO_1.L1}</strong>, <strong>L₂={EJERCICIO_1.L2}</strong>, <strong>θ₁={EJERCICIO_1.theta1Deg}°</strong> y <strong>θ₂={EJERCICIO_1.theta2Deg}°</strong>, calcula la posición del efector final. Usa la simulación o la fórmula.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pl-12">
+              <label className="text-sm text-slate-600 flex items-center gap-1.5">
+                x = <input
+                  type="number"
+                  value={ex1X}
+                  onChange={(e) => { setEx1X(e.target.value); setEx1Result(null); }}
+                  className="w-24 font-mono text-sm border border-slate-300 rounded-input px-2.5 py-2 focus:ring-2 focus:ring-sky-400 focus:border-sky-400"
+                  step="0.1"
+                  placeholder="0"
+                />
+              </label>
+              <label className="text-sm text-slate-600 flex items-center gap-1.5">
+                y = <input
+                  type="number"
+                  value={ex1Y}
+                  onChange={(e) => { setEx1Y(e.target.value); setEx1Result(null); }}
+                  className="w-24 font-mono text-sm border border-slate-300 rounded-input px-2.5 py-2 focus:ring-2 focus:ring-sky-400 focus:border-sky-400"
+                  step="0.1"
+                  placeholder="0"
+                />
+              </label>
+              <button type="button" onClick={verificarEjercicio1} className="px-4 py-2 bg-sky-600 text-white rounded-input text-sm font-medium hover:bg-sky-700 focus:ring-2 focus:ring-sky-400 focus:ring-offset-1">
+                Verificar
+              </button>
+              {ex1Result === 'ok' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-medium text-sm">✓ Correcto</span>}
+              {ex1Result === 'error' && <span className="text-red-600 text-sm">Revisa el cálculo (tolerancia ±{TOLERANCIA_NUMERICA})</span>}
             </div>
           </div>
-        </div>
+        </article>
 
         {/* Ejercicio 2 */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
-          <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm">2</span>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-slate-800 mb-2">Llevar el efector a un punto</h3>
-              <p className="text-sm text-slate-600 mb-3">
-                Usa la simulación (sliders o cinemática inversa) para colocar el efector en <strong>({EJERCICIO_2_TARGET.x}, {EJERCICIO_2_TARGET.y})</strong>. Cuando creas que está en el punto, pulsa Verificar.
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={verificarEjercicio2}
-                  className="px-4 py-2 bg-sky-600 text-white rounded-lg text-sm font-medium hover:bg-sky-700"
-                >
-                  Verificar posición actual
-                </button>
-                <span className="text-slate-500 text-sm">Tu efector está en ({endEffector.x.toFixed(0)}, {endEffector.y.toFixed(0)})</span>
-                {ex2Result === 'ok' && <span className="text-emerald-600 font-medium text-sm">✓ ¡Objetivo alcanzado!</span>}
-                {ex2Result === 'error' && <span className="text-red-600 text-sm">Aún no. Acerca más el efector al punto.</span>}
-              </div>
+        <article className="bg-white rounded-card border border-slate-200 shadow-card overflow-hidden transition hover:shadow-card-hover">
+          <div className="p-5 sm:p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="flex-shrink-0 w-9 h-9 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm">2</span>
+              <h3 className="font-semibold text-slate-800 text-lg">Llevar el efector a un punto</h3>
+            </div>
+            <p className="text-sm text-slate-600 mb-4 pl-12">
+              Usa la simulación para colocar el efector en <strong>({EJERCICIO_2_TARGET.x}, {EJERCICIO_2_TARGET.y})</strong>. Cuando esté en el punto, pulsa Verificar.
+            </p>
+            <div className="flex flex-wrap items-center gap-3 pl-12">
+              <button type="button" onClick={verificarEjercicio2} className="px-4 py-2 bg-sky-600 text-white rounded-input text-sm font-medium hover:bg-sky-700 focus:ring-2 focus:ring-sky-400 focus:ring-offset-1">
+                Verificar posición actual
+              </button>
+              <span className="text-slate-500 text-sm font-mono">Efector: ({endEffector.x.toFixed(0)}, {endEffector.y.toFixed(0)})</span>
+              {ex2Result === 'ok' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-medium text-sm">✓ ¡Objetivo alcanzado!</span>}
+              {ex2Result === 'error' && <span className="text-red-600 text-sm">Acerca más el efector al punto.</span>}
             </div>
           </div>
-        </div>
+        </article>
 
         {/* Ejercicio 3 */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-5">
-          <div className="flex items-start gap-3">
-            <span className="flex-shrink-0 w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center text-sm">3</span>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-slate-800 mb-2">Programar la cinemática directa</h3>
-              <p className="text-sm text-slate-600 mb-3">
-                Completa o escribe la función <code className="bg-slate-100 px-1 rounded">directa(theta1, theta2, L1, L2)</code> en JavaScript. Los ángulos vienen en <strong>radianes</strong>. Debe devolver <code className="bg-slate-100 px-1 rounded">&#123; x, y &#125;</code>. Usa solo <code className="bg-slate-100 px-1 rounded">Math.cos</code>, <code className="bg-slate-100 px-1 rounded">Math.sin</code> y las variables dadas.
-              </p>
+        <article className="bg-white rounded-card border border-slate-200 shadow-card overflow-hidden transition hover:shadow-card-hover">
+          <div className="p-5 sm:p-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="flex-shrink-0 w-9 h-9 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-sm">3</span>
+              <h3 className="font-semibold text-slate-800 text-lg">Programar la cinemática directa</h3>
+            </div>
+            <p className="text-sm text-slate-600 mb-4 pl-12">
+              Completa la función <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700 font-mono text-xs">directa(theta1, theta2, L1, L2)</code>. Los ángulos están en <strong>radianes</strong>. Debe devolver <code className="bg-slate-100 px-1.5 py-0.5 rounded text-slate-700 font-mono text-xs">&#123; x, y &#125;</code> usando <code className="bg-slate-100 px-1 rounded">Math.cos</code> y <code className="bg-slate-100 px-1 rounded">Math.sin</code>.
+            </p>
+            <div className="pl-12">
               <textarea
                 value={ex3Code}
                 onChange={(e) => { setEx3Code(e.target.value); setEx3Result(null); }}
-                className="w-full h-36 font-mono text-xs border border-slate-300 rounded-lg p-3 bg-slate-50"
+                className="w-full h-40 font-mono text-xs border border-slate-300 rounded-input p-4 bg-slate-800 text-slate-100 placeholder-slate-500 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 resize-y min-h-[8rem]"
                 spellCheck="false"
+                placeholder="function directa(...) { ... }"
               />
               <div className="flex flex-wrap items-center gap-3 mt-3">
-                <button
-                  type="button"
-                  onClick={verificarEjercicio3}
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-medium hover:bg-emerald-700"
-                >
+                <button type="button" onClick={verificarEjercicio3} className="px-4 py-2 bg-emerald-600 text-white rounded-input text-sm font-medium hover:bg-emerald-700 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-1">
                   Ejecutar y verificar
                 </button>
-                <button
-                  type="button"
-                  onClick={() => { setEx3Code(PLANTILLA_CODIGO); setEx3Result(null); }}
-                  className="px-3 py-2 bg-slate-200 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-300"
-                >
+                <button type="button" onClick={() => { setEx3Code(PLANTILLA_CODIGO); setEx3Result(null); }} className="px-3 py-2 bg-slate-200 text-slate-700 rounded-input text-sm font-medium hover:bg-slate-300">
                   Restaurar plantilla
                 </button>
-                {ex3Result === 'ok' && <span className="text-emerald-600 font-medium text-sm">✓ ¡Correcto! Tu función pasa todos los tests.</span>}
-                {ex3Result?.error && <span className="text-red-600 text-sm max-w-md">{ex3Result.error}</span>}
+                {ex3Result === 'ok' && <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-medium text-sm">✓ ¡Correcto! Pasa todos los tests.</span>}
+                {ex3Result?.error && <span className="text-red-600 text-sm max-w-md bg-red-50 px-2 py-1 rounded border border-red-100">{ex3Result.error}</span>}
               </div>
             </div>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   );

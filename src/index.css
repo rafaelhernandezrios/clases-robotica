@@ -2,8 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Outfit', system-ui, sans-serif;
+  @apply text-slate-800 antialiased;
+  line-height: 1.6;
+}
+
+/* Accesibilidad: anillo de foco visible */
+*:focus-visible {
+  @apply outline-2 outline-offset-2 outline-sky-500;
+}
+
+/* Inputs range más grandes en touch */
+@media (pointer: coarse) {
+  input[type="range"] {
+    min-height: 28px;
+  }
 }
